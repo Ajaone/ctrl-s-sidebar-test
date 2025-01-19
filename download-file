@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Referer Palsu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .popup {
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            max-width: 400px;
+            display: none;
+            margin-top: 20px;
+        }
+        .btn-download {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simulasi Referer Palsu</h1>
+    <p>Website ini mencoba memanipulasi URL referer dalam popup unduhan.</p>
+
+    <button class="btn-download" onclick="triggerDownload()">Klik untuk Download</button>
+
+    <div id="popup" class="popup">
+        <p><strong>Popup Unduhan:</strong></p>
+        <p>File ini berasal dari <span id="referer"></span></p>
+    </div>
+
+    <script>
+        function triggerDownload() {
+            // Simulasikan popup dengan referer palsu
+            const fakeReferer = "https://trustedwebsite.com"; // Referer palsu
+            const actualSource = "https://maliciouswebsite.com/file.apk"; // Sumber asli
+
+            // Tampilkan popup
+            const popup = document.getElementById("popup");
+            popup.style.display = "block";
+
+            // Tampilkan referer palsu
+            document.getElementById("referer").innerText = fakeReferer;
+
+            // Simulasi unduhan
+            console.log(`Unduh dimulai dari: ${actualSource}`);
+        }
+    </script>
+</body>
+</html>
