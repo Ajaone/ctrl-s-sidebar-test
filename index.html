@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ctrl+S Testing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    #sidebar {
+      width: 250px;
+      padding: 10px;
+      background: #34495e;
+      color: white;
+      display: block;
+    }
+    .hidden {
+      display: none;
+    }
+    #log {
+      margin-top: 20px;
+      background: #f9f9f9;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div id="sidebar">This is a sidebar. It can be hidden by pressing Ctrl+S.</div>
+  <div id="content">This is the main content.</div>
+  <div id="log"></div>
+
+  <script>
+    const log = document.getElementById('log');
+
+    document.addEventListener('keydown', (event) => {
+      if (event.ctrlKey && event.key.toLowerCase() === 's') {
+        event.preventDefault(); // Prevent default Ctrl+S behavior
+        log.textContent += '\nCtrl+S pressed. Sidebar visibility toggled.';
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('hidden');
+      }
+    });
+
+    document.addEventListener('keyup', (event) => {
+      if (event.ctrlKey && event.key.toLowerCase() === 's') {
+        log.textContent += '\nCtrl+S released.';
+      }
+    });
+  </script>
+</body>
+</html>
